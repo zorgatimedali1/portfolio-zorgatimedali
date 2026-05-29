@@ -46,7 +46,7 @@ export default function HeroSection() {
     if (!ringsRef.current) return;
     gsap.to(ringsRef.current, {
       rotation: 360,
-      duration: 30,
+      duration: 20,
       repeat: -1,
       ease: "none",
     });
@@ -208,22 +208,22 @@ export default function HeroSection() {
               <div
                 className="absolute inset-0 rounded-full"
                 style={{
-                  border: "1px solid rgba(59,130,246,0.08)",
-                  boxShadow: "0 0 100px rgba(59,130,246,0.04), inset 0 0 100px rgba(59,130,246,0.02)",
+                  border: "1px solid rgba(59,130,246,0.2)",
+                  boxShadow: "0 0 120px rgba(59,130,246,0.1), inset 0 0 120px rgba(59,130,246,0.04)",
                 }}
               />
               <div
                 className="absolute inset-[15%] rounded-full"
                 style={{
-                  border: "1px solid rgba(139,92,246,0.1)",
-                  boxShadow: "0 0 80px rgba(139,92,246,0.04), inset 0 0 80px rgba(139,92,246,0.02)",
+                  border: "1px solid rgba(139,92,246,0.2)",
+                  boxShadow: "0 0 100px rgba(139,92,246,0.08), inset 0 0 100px rgba(139,92,246,0.04)",
                 }}
               />
               <div
                 className="absolute inset-[30%] rounded-full"
                 style={{
-                  border: "1px solid rgba(6,182,212,0.12)",
-                  boxShadow: "0 0 60px rgba(6,182,212,0.04), inset 0 0 60px rgba(6,182,212,0.02)",
+                  border: "1px solid rgba(6,182,212,0.2)",
+                  boxShadow: "0 0 80px rgba(6,182,212,0.08), inset 0 0 80px rgba(6,182,212,0.04)",
                 }}
               />
               {/* Orbital Dots */}
@@ -233,20 +233,20 @@ export default function HeroSection() {
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                   style={{ transform: `rotate(${deg}deg) translateX(195px) rotate(-${deg}deg)` }}
                 >
-                  <div className="w-2 h-2 rounded-full bg-electric-blue/40 shadow-[0_0_8px_rgba(59,130,246,0.3)]" />
+                  <div className="w-3 h-3 rounded-full bg-electric-blue/50 shadow-[0_0_14px_rgba(59,130,246,0.6)]" />
                 </div>
               ))}
             </div>
 
             {/* Center Monogram */}
-            <div className="relative z-10 w-32 h-32 sm:w-36 sm:h-36 rounded-full flex items-center justify-center"
+            <div className="relative z-10 w-36 h-36 sm:w-40 sm:h-40 rounded-full flex items-center justify-center"
               style={{
-                background: "linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15))",
-                border: "1px solid rgba(59,130,246,0.2)",
-                boxShadow: "0 0 80px rgba(59,130,246,0.1), inset 0 0 80px rgba(59,130,246,0.05)",
+                background: "linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2))",
+                border: "1px solid rgba(59,130,246,0.3)",
+                boxShadow: "0 0 100px rgba(59,130,246,0.15), inset 0 0 100px rgba(59,130,246,0.08)",
               }}
             >
-              <span className="font-inter font-black text-5xl sm:text-6xl text-text-primary drop-shadow-[0_0_12px_rgba(59,130,246,0.5)]">
+              <span className="font-inter font-black text-5xl sm:text-6xl text-text-primary drop-shadow-[0_0_20px_rgba(59,130,246,0.7)]">
                 M
               </span>
             </div>
