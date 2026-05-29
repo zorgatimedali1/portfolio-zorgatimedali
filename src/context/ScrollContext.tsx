@@ -39,27 +39,25 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
   }, [handleScroll]);
 
   useEffect(() => {
-    const sections = ["home", "about", "skills", "projects", "experience", "contact"];
-    const observers: IntersectionObserver[] = [];
+    const ids = ["home", "about", "projects", "experience", "skills", "services", "contact"];
 
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActiveSection(id);
-            }
-          });
-        },
-        { threshold: 0, rootMargin: "-40% 0px -60% 0px" }
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
+    const update = () => {
+      const navH = 80;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top;
+        if (top <= navH + 100) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
+    };
 
-    return () => observers.forEach((o) => o.disconnect());
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
   }, []);
 
   return (
