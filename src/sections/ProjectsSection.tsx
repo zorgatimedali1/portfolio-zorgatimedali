@@ -12,6 +12,7 @@ export default function ProjectsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [modalProject, setModalProject] = useState<Project | null>(null);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -51,7 +52,7 @@ export default function ProjectsSection() {
           {projects.map((project) => (
             <div
               key={project.id}
-              onClick={() => setModalProject(project)}
+              onClick={() => { setModalProject(project); setVideoLoaded(false); }}
               className="project-card glass-card p-7 cursor-pointer transition-all duration-500 border border-electric-blue/10 hover:border-electric-blue/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] hover:scale-[1.02]"
             >
               <div className="w-full h-60 rounded-lg overflow-hidden mb-5 bg-dark-surface">
@@ -110,13 +111,23 @@ export default function ProjectsSection() {
                 ))}
               </div>
             ) : modalProject.video ? (
-              <video
-                src={modalProject.video}
-                className="w-full aspect-video object-cover rounded-xl mb-6"
-                controls
-                autoPlay
-                playsInline
-              />
+              <div className="relative w-full aspect-video rounded-xl mb-6 overflow-hidden bg-dark-surface">
+                {!videoLoaded && (
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                    <div className="w-10 h-10 border-2 border-electric-blue border-t-transparent rounded-full animate-spin" />
+                  </div>
+                )}
+                <video
+                  src={modalProject.video}
+                  poster={modalProject.image}
+                  className="w-full h-full object-cover"
+                  controls
+                  autoPlay
+                  playsInline
+                  preload="metadata"
+                  onLoadedData={() => setVideoLoaded(true)}
+                />
+              </div>
             ) : (
               <img
                 src={modalProject.image}
