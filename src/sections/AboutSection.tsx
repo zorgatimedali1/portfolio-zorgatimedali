@@ -97,7 +97,7 @@ export default function AboutSection() {
                 src="/images/photo pro linkedin.png"
                 alt="Mohamed Ali Zorgati"
                 className="w-full aspect-[3/4] object-cover rounded-xl"
-                loading="lazy"
+                fetchPriority="high"
               />
               <FloatingBadge
                 text="Available for work"

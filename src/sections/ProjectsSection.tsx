@@ -59,7 +59,6 @@ export default function ProjectsSection() {
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
-                  loading="lazy"
                 />
               </div>
               <h3 className="font-inter text-xl font-semibold text-text-primary">
